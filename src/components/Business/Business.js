@@ -3,23 +3,14 @@ import './Business.css';
 // The purpose of the <Business /> component is 
 // to represent how a business (a restaurant) in Ravenous will be formatted and styled.
 
-// Create a JS Object called business
-const business = { 
-    imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
-    name: 'MarginOtto Pizzeria',
-    address: '1010 Paddington Way',
-    city: 'Flavortown',
-    state: 'NY',
-    zipCode: '10101',
-    category: 'Italian',
-    rating: 4.5,
-    reviewCount: 90
-};
+
+
 
 // Create a React component called Business. The component should extend React.Component.
 // Components can be functions or class
 class Business extends React.Component{
     render(){
+        const {business} = this.props;
         return(
             // Change all the class attributes (JS) to className to write HTML/JS as JSX
             // Instead of hardcoding text, change that to values from the business object keys

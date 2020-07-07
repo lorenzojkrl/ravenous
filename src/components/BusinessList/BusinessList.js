@@ -13,11 +13,11 @@ class BusinessList extends React.Component{
             // Remmeber to change class attributes to className to render as JSX
             <div className="BusinessList">
                 {/* Return Business component */}
-                <Business />
-                <Business />
-                <Business />
-                <Business />
-                <Business />
+                {
+                    this.props.businesses.map((business) => {
+                        return <Business business={business} />;  
+                    })
+                }
             </div>
         );
     }
