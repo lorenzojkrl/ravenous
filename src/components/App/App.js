@@ -16,7 +16,7 @@ const business = {
   reviewCount: 90
 };
 
-// Creating a list f businesses using an array  
+// Creating a list of businesses using an array  
 const businesses = [
   business,
   business,
