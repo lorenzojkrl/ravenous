@@ -29,7 +29,15 @@ class SearchBar extends React.Component {
       // Use square brackets to access the value in sortByOptions
       let sortByOptionValue = this.sortByOptions[sortByOption];
       // Use key to keep track of the element. key attribute is React-specific and a unique value like sortByOptionValue
-      return <li key={sortByOptionValue}>{sortByOption}</li>;
+      return (
+        <li
+          key={sortByOptionValue}
+          className={this.getSortByClass(sortByOptionValue)}
+          onClick={this.handleSortByChange.bind(this, sortByOptionValue)}
+        >
+          {sortByOption}
+        </li>
+      );
     });
   }
 
@@ -51,11 +59,16 @@ class SearchBar extends React.Component {
   }
 
   getSortByClass(sortByOption) {
-    if (this.state === sortByOption) {
+    if (this.state.sortBy === sortByOption) {
       return "active";
-    } else {
-      return "";
     }
+    return "";
+  }
+
+  handleSortByChange(sortByOption) {
+    this.setState({
+      sortBy: sortByOption,
+    });
   }
 
   render() {
