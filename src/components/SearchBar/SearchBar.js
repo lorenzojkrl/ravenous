@@ -48,6 +48,9 @@ class SearchBar extends React.Component {
       location: "",
       sortBy: "best_match",
     };
+    this.handleTermChange = this.handleTermChange.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
+
     // Move the sortByOptions object to the last line of the constuctor()
     // and change it from a local variable to a member variable using this.
     // Update the two references to sortByOptions in the renderSortByOptions() method to now use this.
@@ -71,6 +74,22 @@ class SearchBar extends React.Component {
     });
   }
 
+  // Ravenous will also need to handle changes in the two input elements.
+  // Specifically, it will need to handle changes in “Terms” (businesses) and “Location” (location to search in).
+  // Add two new methods:
+  //   Since both will be related to events being triggered, both should accept event as an argument
+  handleTermChange(event) {
+    this.setState({
+      term: event.target.value,
+    });
+  }
+
+  handleLocationChange(event) {
+    this.setState({
+      location: event.target.value,
+    });
+  }
+
   render() {
     return (
       <div className="SearchBar">
@@ -78,8 +97,11 @@ class SearchBar extends React.Component {
           <ul>{this.renderSortByOptions()}</ul>
         </div>
         <div className="SearchBar-fields">
-          <input placeholder="Search Businesses" />
-          <input placeholder="Where?" />
+          <input
+            placeholder="Search Businesses"
+            onChange={this.handleTermChange}
+          />
+          <input placeholder="Where?" onChange={this.handleLocationChange} />
         </div>
         <div className="SearchBar-submit">
           <a>Let's Go</a>
